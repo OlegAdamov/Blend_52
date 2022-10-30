@@ -1,14 +1,17 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Grid, GridItem, SearchForm, EditForm, Text, Todo } from 'components';
 
-export class Todos extends Component {
-  render() {
-    return (
-      <>
-        <SearchForm />
-      </>
-    );
-  }
-}
+export const Todos = () => {
+  const [todos, setTodos] = useState([]);
+  const getTodo = todo => {
+    setTodos(prev => [...prev, { id: nanoid(), ...todo }]);
+  };
+  console.log('todos, ', todos);
+  return (
+    <>
+      <SearchForm getTodo={getTodo} />
+    </>
+  );
+};
