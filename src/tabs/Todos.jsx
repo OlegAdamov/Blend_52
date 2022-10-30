@@ -12,6 +12,15 @@ export const Todos = () => {
   return (
     <>
       <SearchForm getTodo={getTodo} />
+      <Grid>
+        {todos.map((todo, idx) => {
+          return (
+            <GridItem key={todo.id}>
+              <Todo dataTodo={todo} idx={idx + 1} />
+            </GridItem>
+          );
+        })}
+      </Grid>
     </>
   );
 };
