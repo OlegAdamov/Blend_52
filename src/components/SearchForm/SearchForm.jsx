@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { FormBtn, InputSearch, SearchFormStyled } from './SearchForm.styled';
 
-export const SearchForm = () => {
+export const SearchForm = ({ getTodo }) => {
   const [search, setSearch] = useState('');
 
   const handleChange = event => {
@@ -12,6 +12,7 @@ export const SearchForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    getTodo({ text: search });
     setSearch('');
   };
 
